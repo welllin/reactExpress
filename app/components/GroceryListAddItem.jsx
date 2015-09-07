@@ -1,4 +1,5 @@
-var React = require('react/addons');
+var React = require('react/addons'),
+    action = require('./../actions/GroceryItemActionCreator.jsx')
 
 module.exports = React.createClass({
     getInitialState: function(){
@@ -11,7 +12,12 @@ module.exports = React.createClass({
     },
     addItem: function(e){
         e.preventDefault();
-        console.log('Adding Item!', this.state.input);
+        //console.log('Adding Item!', this.state.input);
+        action.add({
+            name: this.state.input
+        });
+
+        this.setState({input:''});
     },
     render: function(){
         return (
