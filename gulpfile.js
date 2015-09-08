@@ -10,7 +10,7 @@ gulp.task('live-server', function(){
     server.start();
 });
 
-gulp.task('bundle', ['copy'], function(){
+gulp.task('bundle', ['copy', 'vendor'], function(){
     return browserify({
         entries:'app/main.jsx',
         debug: true
@@ -23,6 +23,11 @@ gulp.task('bundle', ['copy'], function(){
 
 gulp.task('copy', function(){
     gulp.src(['app/*.css'])
+    .pipe(gulp.dest('./.tmp'));
+});
+
+gulp.task('vendor', function(){
+    gulp.src(['bower_components/skeleton/css/*.css'])
     .pipe(gulp.dest('./.tmp'));
 });
 
