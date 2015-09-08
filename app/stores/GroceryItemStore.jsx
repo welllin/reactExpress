@@ -19,6 +19,8 @@ function GroceryItemStore(){
     function addGroceryItem(item){
         items.push(item);
         triggerListeners();
+
+        helper.post('/api/items', item);
     }
     function deleteGroceryItem(item){
         var index;
